@@ -34,6 +34,7 @@ void push(StackNode **root, int data)
     StackNode *node = newNode(data);
     node->next = *root;
     *root = node;
+    cout << data << " pushed to stack\n";
 }
 
 int pop(StackNode **root)
@@ -41,20 +42,22 @@ int pop(StackNode **root)
     // Your code here
     if (isEmpty(*root))
     {
+        cout << "Stack is empty\n";
         return -1;
     }
     StackNode *node = *root;
     *root = (*root)->next;
     int pop_val = node->data;
-    free(node);
+    delete node;
     return pop_val;
 }
 
 int peek(StackNode *root)
 {
     // Your code here
-    if (isEmpty(*root))
+    if (isEmpty(root))
     {
+        cout << "Stack is empty\n";
         return -1;
     }
     return root->data;

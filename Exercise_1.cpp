@@ -20,45 +20,49 @@ public:
 
     Stack()
     { // Constructor here }
-        bool push(int x);
-        int pop();
-        int peek();
-        bool isEmpty();
+        top = 0;
     };
 
-    bool Stack::push(int x)
+    bool push(int x)
     {
         // Your code here
         // Check Stack overflow as well
-        if (top < MAX)
+        if (top >= MAX)
         {
-            a[top] = x;
-            top = top + 1;
+            cout << "Stack Overflow";
+            return false;
         }
+        a[top++] = x;
+        return true;
     }
 
-    int Stack::pop()
+    int pop()
     {
         // Your code here
         // Check Stack Underflow as well
+        if(top <= 0) {
+            cout << "Stack is empty";
+            return -1;
+        }
+        return a[--top];
     }
-    int Stack::peek()
+    int peek()
     {
         // Your code here
         // Check empty condition too
-        if (top > 0)
-        {
-            top = top - 1;
-            return a[top];
+        if(top <= 0) {
+            cout << "Stack is empty";
+            return -1;
         }
-        return -1;
+        return a[top - 1];
     }
 
-    bool Stack::isEmpty()
+    bool isEmpty()
     {
         // Your code here
         return (top == 0);
     }
+};
 
     // Driver program to test above functions
     int main()
@@ -68,6 +72,6 @@ public:
         s.push(20);
         s.push(30);
         cout << s.pop() << " Popped from stack\n";
-
+        cout << s.peek() << " is the top element in stack\n";
         return 0;
     }

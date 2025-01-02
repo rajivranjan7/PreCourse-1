@@ -65,6 +65,7 @@ void append(Node **head_ref, int new_data)
     if (*head_ref == NULL)
     {
         *head_ref = node;
+        return;
     }
     /* 5. Else traverse till the last node */
     Node *last_node = *head_ref;
@@ -78,7 +79,7 @@ void append(Node **head_ref, int new_data)
 
 // This function prints contents of
 // linked list starting from head
-void printList(Node *node)
+void printList(Node *head_ref)
 {
     // Your code here
     Node *temp = head_ref;
